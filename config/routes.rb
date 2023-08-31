@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :properties
+  resources :user, only: :show
   devise_for :users,
              controllers: {
                sessions: 'users/sessions',
