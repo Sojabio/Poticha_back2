@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_095208) do
     t.string "title"
     t.integer "price"
     t.text "description"
+    t.string "image"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

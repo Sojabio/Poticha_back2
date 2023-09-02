@@ -16,17 +16,38 @@ class PropertiesController < ApplicationController
   end
 
   # POST /properties
-  def create
-    puts "Current user: #{current_user.inspect}"
-    @property = Property.new(property_params)
-    # @property = current_user.properties.new(property_params)
+ # app/controllers/properties_controller.rb
 
-    if @property.save
-      render json: @property, status: :created, location: @property
-    else
-      render json: @property.errors, status: :unprocessable_entity
-    end
+def create
+  # Check if an image file was provided in the request
+  if params[:image].present?
+    # Upload the image to Cloudinary
+    image = Cloudinary::Uploader.upload(params[:image])
+
+    # Create a new Property instance with the image URL
+    @property = Property.new(image: image['url'])
+  else
+    # Handle the case where no image was provided
+    @property = Property.new
   end
+
+  # Assuming you have authentication set up to get the current user, uncomment this line
+  # puts "Current user: #{current_user.inspect}"
+
+  # Set other property attributes based on your form data
+  @property.title = params[:property][:title]
+  @property.price = params[:property][:price]
+  @property.description = params[:property][:description]
+  @property.user_id = params[:property][:user_id]
+
+  if @property.save
+    render json: @property, status: :created, location: @property
+  else
+    render json: @property.errors, status: :unprocessable_entity
+  end
+end
+
+
 
   # PATCH/PUT /properties/1
   def update
@@ -50,7 +71,7 @@ class PropertiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def property_params
-      params.require(:property).permit(:title, :price, :description, :user_id)
+      params.require(:property).permit(:title, :price, :description, :user_id, :image)
     end
 
     def user_is_current_user
