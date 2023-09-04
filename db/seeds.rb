@@ -17,6 +17,14 @@ end
   )
 end
 
+1.times do
+  User.create!(
+    email: "user@test.fr",
+    password: "azerty",
+    is_admin: false
+  )
+end
+
 10.times do
   Property.create!(
     title: Faker::Book.title,
