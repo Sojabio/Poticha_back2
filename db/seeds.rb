@@ -4,7 +4,17 @@ User.destroy_all
 10.times do
   User.create!(
     email: Faker::Internet.unique.email,
-    password: "123456")
+    password: "123456",
+    is_admin: false
+  )
+end
+
+1.times do
+  User.create!(
+    email: "admin@test.fr",
+    password: "azerty",
+    is_admin: true
+  )
 end
 
 10.times do
