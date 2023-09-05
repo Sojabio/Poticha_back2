@@ -5,6 +5,7 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.integer :price
       t.text :description
       t.string :image
+      t.string :city
       t.belongs_to :user, index: true
 
       t.timestamps
