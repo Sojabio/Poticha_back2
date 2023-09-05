@@ -71,7 +71,7 @@ end
 
     # Only allow a list of trusted parameters through.
     def property_params
-      params.require(:property).permit(:title, :price, :description, :user_id, :image)
+      params.require(:property).permit(:title, :price, :description, :user_id, :image, :city)
     end
 
     def user_is_current_user
