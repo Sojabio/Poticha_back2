@@ -5,8 +5,11 @@ class PropertiesController < ApplicationController
 
   # GET /properties
   def index
-    @properties = Property.all
-
+    if params[:user_id]
+      @properties = Property.where(user_id: params[:user_id])
+    else
+      @properties = Property.all
+    end
     render json: @properties
   end
 
