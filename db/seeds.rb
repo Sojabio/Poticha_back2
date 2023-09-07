@@ -28,7 +28,7 @@ end
 cities = ["Paris", "Marseille", "Lyon", "Toulouse", "Nice", "Nantes", "Strasbourg", "Montpellier", "Bordeaux", "Lille", "Rennes", "Reims", "Le Havre", "Cergy", "Saint-Étienne", "Toulon", "Angers", "Grenoble", "Dijon", "Nîmes", "Aix-en-Provence", "Saint-Quentin", "Brest", "Le Mans", "Amiens", "Limoges", "Tours", "Villeurbanne", "Metz"]
 
 10.times do
-  property = Property.create!(
+  Property.create!(
     title: Faker::Book.title,
     price: rand(100000...1000000000),
     description: Faker::Quotes::Shakespeare.king_richard_iii_quote,
