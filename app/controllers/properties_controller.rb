@@ -34,9 +34,6 @@ def create
     @property = Property.new
   end
 
-  # Assuming you have authentication set up to get the current user, uncomment this line
-  # puts "Current user: #{current_user.inspect}"
-
   # Set other property attributes based on your form data
   @property.title = params[:property][:title]
   @property.price = params[:property][:price]
