@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :properties
+  resources :posts
+  resources :books
+  resources :authors
   resources :user, only: :show
   devise_for :users,
              controllers: {

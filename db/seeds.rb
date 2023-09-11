@@ -1,39 +1,40 @@
-Property.destroy_all
+Post.destroy_all
+Author.destroy_all
+Book.destroy_all
 User.destroy_all
 
-10.times do
-  User.create!(
-    email: Faker::Internet.unique.email,
-    password: "123456",
-    is_admin: false
-  )
-end
 
 1.times do
   User.create!(
     email: "admin@test.fr",
     password: "azerty",
-    is_admin: true
   )
 end
 
-1.times do
-  User.create!(
-    email: "user@test.fr",
-    password: "azerty",
-    is_admin: false
-  )
-end
-
-cities = ["Paris", "Marseille", "Lyon", "Toulouse", "Nice", "Nantes", "Strasbourg", "Montpellier", "Bordeaux", "Lille", "Rennes", "Reims", "Le Havre", "Cergy", "Saint-Étienne", "Toulon", "Angers", "Grenoble", "Dijon", "Nîmes", "Aix-en-Provence", "Saint-Quentin", "Brest", "Le Mans", "Amiens", "Limoges", "Tours", "Villeurbanne", "Metz"]
 
 10.times do
-  Property.create!(
-    title: Faker::Book.title,
-    price: rand(100000...1000000000),
-    description: Faker::Quotes::Shakespeare.king_richard_iii_quote,
-    user_id: rand(User.first.id..User.last.id),
-    city: cities.sample
+  Author.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    biography: Faker::Quotes::Shakespeare.king_richard_iii_quote,
+    email: "author@test.fr"
   )
+end
 
+10.times do
+  Book.create!(
+    title: Faker::Book.title,
+    description: Faker::Books::Lovecraft.paragraph,
+    ISBN: "PLOUPISBN123456",
+    season: rand(1..2),
+    pages: rand(25..150),
+    author_id: rand(Author.first.id..Author.last.id),
+  )
+end
+
+10.times do
+  Post.create!(
+    title: Faker::Adjective.positive,
+    content: Faker::Fantasy::Tolkien.poem,
+  )
 end
