@@ -36,8 +36,4 @@ cities = ["Paris", "Marseille", "Lyon", "Toulouse", "Nice", "Nantes", "Strasbour
     city: cities.sample
   )
 
-
-
-
-
 end
