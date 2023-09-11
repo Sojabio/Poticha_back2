@@ -12,7 +12,7 @@ User.destroy_all
 end
 
 
-10.times do
+authors = 10.times.map do
   Author.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -21,14 +21,14 @@ end
   )
 end
 
-10.times do
+authors.each_with_index do |author, index|
   Book.create!(
     title: Faker::Book.title,
     description: Faker::Books::Lovecraft.paragraph,
     ISBN: "PLOUPISBN123456",
     season: rand(1..2),
     pages: rand(25..150),
-    author_id: rand(Author.first.id..Author.last.id),
+    author_id: author.id,
   )
 end
 
