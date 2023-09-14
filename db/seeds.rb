@@ -1,3 +1,4 @@
+Countdown.destroy_all
 Post.destroy_all
 Author.destroy_all
 Book.destroy_all
@@ -28,6 +29,7 @@ authors.each_with_index do |author, index|
     ISBN: "PLOUPISBN123456",
     season: rand(1..2),
     pages: rand(25..150),
+    issue_date: Faker::Time.backward(days: 600, period: :evening),
     author_id: author.id,
   )
 end
@@ -36,5 +38,13 @@ end
   Post.create!(
     title: Faker::Adjective.positive,
     content: Faker::Fantasy::Tolkien.poem,
+  )
+end
+
+1.times do
+  Countdown.create!(
+    start_date: DateTime.strptime("14/09/2023 8:00", "%d/%m/%Y %H:%M"),
+    end_date: DateTime.strptime("25/10/2023 8:00", "%d/%m/%Y %H:%M"),
+    is_open: false
   )
 end

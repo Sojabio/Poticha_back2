@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_150636) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_13_102452) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,10 +30,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_150636) do
     t.string "ISBN"
     t.integer "season"
     t.integer "pages"
+    t.datetime "issue_date"
     t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_books_on_author_id"
+  end
+
+  create_table "countdowns", force: :cascade do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.boolean "is_open"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "jwt_denylist", force: :cascade do |t|
