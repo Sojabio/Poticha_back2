@@ -1,5 +1,7 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: %i[ show update destroy ]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+
 
   # GET /authors
   def index
