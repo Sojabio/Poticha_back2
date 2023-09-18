@@ -10,10 +10,10 @@ class ContactForm < ApplicationMailer
   end
 
     # send email to author
-    def send_message_email_to_author(message, recipient_email)
-      @message = message
-      mail( to: recipient_email,
-      subject: 'Nouveau message sur LePoticha' )
-    end
+    # def send_message_email_to_author(message, recipient_email)
+    #   @message = message
+    #   mail( to: recipient_email,
+    #   subject: 'Nouveau message sur LePoticha' )
+    # end
 
 end
