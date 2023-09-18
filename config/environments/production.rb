@@ -56,7 +56,9 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "marketplace_back_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: '127.0.0.1', port: 5173 }
+  config.action_mailer.default_url_options = { :host => 'https://lepoticha-874408a4e159.herokuapp.com/' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
