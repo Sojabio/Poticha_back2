@@ -5,7 +5,7 @@ class ContactForm < ApplicationMailer
   # send email from contact form
   def send_message_email(message)
     @message = message
-    mail( to: 'prout@yopmail.com',
+    mail( to: 'solene.jabaud@gmail.com',
     subject: 'Nouveau message de LePoticha' )
   end
 end
