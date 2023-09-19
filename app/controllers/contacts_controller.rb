@@ -3,14 +3,10 @@ class ContactsController < ApplicationController
 
   def create
     @message = contact_params
-
     recipient_email = params[:recipientEmail]
-    puts "Recipient Email: #{recipient_email}"
-    raise ArgumentError, 'Recipient Email is blank' if recipient_email.blank?
-    send_email_to_author = ContactForm.send_message_email_to_author(@message, recipient_email).deliver
-    # send_email = ContactForm.send_message_email(@message).deliver
+    send_email = ContactForm.send_message_email_to_author(@message, recipient_email).deliver
 
-    if send_email_to_author
+    if send_email
       render json: {sent: true}
     else
       render json: {sent: false}
