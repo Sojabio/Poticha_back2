@@ -12,9 +12,7 @@ class ContactForm < ApplicationMailer
     # send email to author
     def send_message_email_to_author(message, recipient_email)
       @message = message
-      mail(to: recipient_email, subject: 'Nouveau message sur LePoticha') do |format|
-        format.text { render plain: "To: #{recipient_email}" }
-      end
+      mail(to: recipient_email, subject: 'Nouveau message sur LePoticha') 
     end
 
 
