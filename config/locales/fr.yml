@@ -1,0 +1,65 @@
+fr:
+  activerecord:
+    attributes:
+      book:
+        title: "Le titre"
+        description: "La description"
+        season: "La saison"
+        pages: "Le nombre de pages"
+        author_id: "L'auteurice"
+        ISBN: "L'ISBN"
+        author: "L'auteurice"
+        issue_date: "La date de parution"
+    errors:
+      models:
+        book:
+          attributes:
+            title:
+              blank: "doit être mentionné"
+            description:
+              blank: "doit être mentionnée"
+            season:
+              blank: "doit être mentionnée"
+              greater_than_or_equal_to: "ne peut pas être inférieure à 1"
+              not_a_number: "doit être un nombre"
+            pages:
+              blank: "doit être mentionné"
+              greater_than_or_equal_to: "ne peut pas être inférieure à 1"
+              not_a_number: "doit être un nombre"
+            ISBN:
+              blank: "doit être mentionné"
+            author:
+              required: "doit être mentionnée"
+            issue_date:
+              blank: "doit être mentionnée"
+    attributes:
+      author:
+        first_name: "Le prénom"
+        last_name: "Le nom"
+        biography: "La biographie"
+        email: "L'adresse email"
+    errors:
+      models:
+        author:
+          attributes:
+            first_name:
+              blank: "doit être mentionné"
+            last_name:
+              blank: "doit être mentionné"
+            biography:
+              blank: "doit être mentionnée"
+            email:
+              blank: "doit être mentionnée"
+              invalid: "doit être valide"
+    attributes:
+      post:
+        title: "Le titre"
+        content: "La description"
+    errors:
+      models:
+        post:
+          attributes:
+            title:
+              blank: "doit être mentionné"
+            content:
+              blank: "doit être complétée"

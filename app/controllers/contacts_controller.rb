@@ -9,7 +9,9 @@ class ContactsController < ApplicationController
     if send_email
       render json: {sent: true}
     else
-      render json: {sent: false}
+      # render json: {sent: false}
+      render json: { sent: false, errors: @contact.errors.full_messages }, status: :unprocessable_entity
+
     end
   end
 

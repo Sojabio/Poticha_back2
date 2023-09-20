@@ -17,23 +17,38 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(post_params)
+    if params[:image].present?
+      image = Cloudinary::Uploader.upload(params[:image])
+      @post = Post.new(image: image['url'])
+    else
+      @post = Post.new
+    end
+
+    @post.title = params[:post][:title]
+    @post.content = params[:post][:content]
 
     if @post.save
       render json: @post, status: :created, location: @post
     else
-      render json: @post.errors, status: :unprocessable_entity
+      render json: { success: false, errors: @post.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /posts/1
   def update
+    if params[:image].present?
+      image = Cloudinary::Uploader.upload(params[:image])
+      @post.update(image: image['url'])
+    end
+
     if @post.update(post_params)
       render json: @post
     else
-      render json: @post.errors, status: :unprocessable_entity
+      render json: { errors: @post.errors.full_messages }, status: :unprocessable_entity
     end
   end
+
+
 
   # DELETE /posts/1
   def destroy
