@@ -17,21 +17,36 @@ class AuthorsController < ApplicationController
 
   # POST /authors
   def create
-    @author = Author.new(author_params)
+    if params[:image].present?
+      image = Cloudinary::Uploader.upload(params[:image])
+      @author = Author.new(image: image['url'])
+    else
+      @author = Author.new
+    end
+
+    @author.first_name = params[:author][:first_name]
+    @author.last_name = params[:author][:last_name]
+    @author.biography = params[:author][:biography]
+    @author.email = params[:author][:email]
 
     if @author.save
       render json: @author, status: :created, location: @author
     else
-      render json: @author.errors, status: :unprocessable_entity
+      render json: { success: false, errors: @author.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /authors/1
   def update
+    if params[:image].present?
+      image = Cloudinary::Uploader.upload(params[:image])
+      @author.update(image: image['url'])
+    end
+
     if @author.update(author_params)
       render json: @author
     else
-      render json: @author.errors, status: :unprocessable_entity
+      render json: { errors: @author.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
