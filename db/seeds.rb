@@ -26,7 +26,7 @@ authors.each_with_index do |author, index|
   Book.create!(
     title: Faker::Book.title,
     description: Faker::Books::Lovecraft.paragraph,
-    ISBN: "PLOUPISBN123456",
+    ISBN: "1234567891234",
     season: rand(1..2),
     pages: rand(25..150),
     issue_date: Faker::Time.backward(days: 600, period: :evening),
