@@ -1,0 +1,21 @@
+fr:
+  activerecord:
+    attributes:
+      author:
+        first_name: "Le prénom"
+        last_name: "Le nom"
+        biography: "La biographie"
+        email: "L'adresse email"
+    errors:
+      models:
+        author:
+          attributes:
+            first_name:
+              blank: "doit être mentionné"
+            last_name:
+              blank: "doit être mentionné"
+            biography:
+              blank: "doit être mentionnée"
+            email:
+              blank: "doit être mentionnée"
+              invalid: "doit être valide"

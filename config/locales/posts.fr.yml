@@ -1,0 +1,14 @@
+fr:
+  activerecord:
+    attributes:
+      post:
+        title: "Le titre"
+        content: "La description"
+    errors:
+      models:
+        post:
+          attributes:
+            title:
+              blank: "doit être mentionné"
+            content:
+              blank: "doit être complétée"
