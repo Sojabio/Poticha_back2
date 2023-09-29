@@ -41,10 +41,10 @@ end
 #   )
 # end
 
-# 1.times do
-#   Countdown.create!(
-#     start_date: DateTime.strptime("14/09/2023 8:00", "%d/%m/%Y %H:%M"),
-#     end_date: DateTime.strptime("25/10/2023 8:00", "%d/%m/%Y %H:%M"),
-#     is_open: false
-#   )
-# end
+1.times do
+  Countdown.create!(
+    start_date: DateTime.strptime("14/09/2023 8:00", "%d/%m/%Y %H:%M"),
+    end_date: DateTime.strptime("25/10/2023 8:00", "%d/%m/%Y %H:%M"),
+    is_open: false
+  )
+end
