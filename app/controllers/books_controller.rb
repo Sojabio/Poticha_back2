@@ -4,18 +4,22 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
-    if params[:author_id]
-      @books = Book.where(author_id: params[:author_id])
-    else
-      @books = Book.all
-    end
-
-    render json: @books
+    @books = Book.includes(:author)
+    render json: @books.as_json(include: {
+      author: {
+        only: [:id, :first_name, :last_name]
+      }
+    })
   end
 
   # GET /books/1
   def show
-    render json: @book
+    @book = Book.includes(:author).find(params[:id])
+    render json: @book.as_json(include: {
+      author: {
+        only: [:id, :first_name, :last_name]
+      }
+    })
   end
 
   # POST /books
