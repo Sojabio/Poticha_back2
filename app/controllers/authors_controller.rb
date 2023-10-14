@@ -5,14 +5,14 @@ class AuthorsController < ApplicationController
 
   # GET /authors
   def index
-    @authors = Author.all
+    @authors = Author.select("id, first_name, last_name, biography, image").all
 
     render json: @authors
   end
 
   # GET /authors/1
   def show
-    render json: @author
+    render json: @author.as_json(except: :email)
   end
 
   # POST /authors

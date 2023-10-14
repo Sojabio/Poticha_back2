@@ -3,7 +3,9 @@ class ContactsController < ApplicationController
 
   def create
     @message = contact_params
-    recipient_email = params[:recipientEmail]
+    @recipient_id = params[:recipientId]
+    @recipient = Author.find(@recipient_id)
+    recipient_email = @recipient.email
     send_email = ContactForm.send_message_email_to_author(@message, recipient_email).deliver
 
     if send_email
