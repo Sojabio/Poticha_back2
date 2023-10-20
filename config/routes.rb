@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :posts
   resources :countdowns
   resources :books
-  resources :authors
+  resources :authors do
+    member do
+      get 'showadmin'
+    end
+  end
+
   resources :user, only: :show
   devise_for :users,
              controllers: {

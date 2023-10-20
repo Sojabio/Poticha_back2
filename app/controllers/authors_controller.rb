@@ -15,6 +15,11 @@ class AuthorsController < ApplicationController
     render json: @author.as_json(except: :email, include: :books)
   end
 
+  #GET /adminauthors/1
+  def showadmin
+    @author = Author.includes(:books).find(params[:id])
+    render json: @author.as_json(include: :books)
+  end
 
   # POST /authors
   def create
